@@ -1,0 +1,20 @@
+<div>
+  <form class="example-form" [formGroup]="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Job Name</mat-label>
+      <input matInput placeholder="Enter Job Title" formControlName="jobTitle">
+    </mat-form-field>
+    <button mat-button color="primary" (click)="clearFilters()" [disabled]="!filters.dirty">Clear Filters</button>
+    <button mat-button color="primary" (click)="filterJobs()" [disabled]="filters.invalid">Search</button>
+  </form>
+
+  <div fxLayout="row wrap">
+    <div *ngFor="let job of jobs" fxFlex="32%" fxFlex.md="32%" fxFlex.lg="23%" fxFlex.sm="47%" fxFlex.xs="100%"
+      class="card">
+      <app-job [job]="job" [showAddButton]="!authStoreService.isRecruiter()" (favAction)="jobAction($event)"></app-job>
+    </div>
+  </div>
+  <div class="btnCenter">
+    <button mat-button color="primary" (click)="loadMore()">Load More</button>
+  </div>
+</div>

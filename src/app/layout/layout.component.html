@@ -1,0 +1,34 @@
+<div style="height: 100vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Find Your Job</span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <a [routerLink]="[ '/jobs']" mat-button>>Home</a>
+        <a [routerLink]="[ 'myJobs']" mat-button>>My Jobs</a>
+      </div>
+           <div class="user">
+          <button mat-button [matMenuTriggerFor]="menu">{{user.name}} {{user.lastname}}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">Log Out</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" mat-list-item>Close</a>
+        <a [routerLink]="[ '/jobs']" (click)="sidenav.toggle()" mat-list-item>Home</a>
+        <a [routerLink]="[ 'myJobs']" (click)="sidenav.toggle()" mat-list-item>My Jobs</a>
+        <a  (click)="logout()" mat-list-item>Log Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>

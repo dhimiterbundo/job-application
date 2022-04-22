@@ -1,0 +1,14 @@
+.description{
+  padding-top: 10px;
+  height: 230px;
+  // overflow: scroll;
+}
+img{
+  padding: 10px
+}
+.title{
+  height: 80px;
+}
+::ng-deep .mat-card-actions{
+  height: 42px
+}

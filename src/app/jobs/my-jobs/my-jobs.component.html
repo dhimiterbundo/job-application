@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <p>My Jobs</p>
+    <button mat-button color="primary" *ngIf="authStoreService.isRecruiter()" (click)="create()">
+      Post New Job</button>
+  </div>
+
+  <div fxLayout="row wrap">
+    <div *ngFor="let job of myJobs" fxFlex="32%" fxFlex.md="32%" fxFlex.lg="23%" fxFlex.sm="47%" fxFlex.xs="100%"
+      class="card">
+      <app-job [job]="job" [showRemoveButton]="true" (favAction)="doAction($event)"></app-job>
+    </div>
+  </div>
+  <div class="btnCenter">
+    <button mat-button color="primary" (click)="loadMore()">Load More</button>
+  </div>
+</div>

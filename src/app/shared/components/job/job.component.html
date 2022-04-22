@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>
+    <div class="title">
+      <img style="vertical-align:middle" width="50" height="50" [src]="job.image">
+      <span> {{job?.title}}</span>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="description">
+      {{job?.description}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-container *ngIf="showRemoveButton && authStoreService.returnUsername() !== job.postedBy">
+      <button mat-icon-button color="primary"   matTooltip="Remove this post from favourites" (click)="action('remove')">
+        <mat-icon>star</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="showAddButton">
+      <button mat-icon-button color="primary"   matTooltip="Add this post to favourites" (click)="action('add')">
+        <mat-icon>star_border</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="authStoreService.isRecruiter() && authStoreService.returnUsername() === job.postedBy">
+      <button mat-icon-button color="primary"   matTooltip="Delete this post" (click)="action('delete')">
+        <mat-icon>delete</mat-icon>
+      </button>
+        <button mat-icon-button color="primary"   matTooltip="See Details" (click)="action('details')">
+        <mat-icon>visibility</mat-icon>
+      </button>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

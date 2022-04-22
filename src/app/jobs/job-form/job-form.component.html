@@ -1,0 +1,33 @@
+<div>
+  <form class="example-form" [formGroup]="jobForm">
+    <div fxLayout="row wrap">
+      <mat-form-field fxFlex="25%" fxFlex.md="25%" fxFlex.lg="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+        <input matInput placeholder="Title" formControlName="title">
+        <mat-error *ngIf="jobForm.get('title')?.invalid"> Required Field
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="25%" fxFlex.md="25%" fxFlex.lg="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+        <input matInput placeholder="Email" formControlName="email" type="email">
+        <mat-error *ngIf="jobForm.get('email')?.invalid"> Required Field
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100%" fxFlex.md="100%" fxFlex.lg="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+        <textarea matInput placeholder="Description" formControlName="description" rows="10">
+          </textarea>
+        <mat-error *ngIf="jobForm.get('description')?.invalid"> Required Field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field fxFlex="25%" fxFlex.md="25%" fxFlex.lg="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+        <input matInput placeholder="Image Url" formControlName="image">
+        <mat-error *ngIf="jobForm.get('image')?.invalid"> Required Field
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="btnCenter">
+      <button mat-stroked-button color="accent" class="btn center" [disabled]="jobForm.invalid || jobForm.untouched"
+        (click)="saveJob()">Save</button>
+    </div>
+  </form>
+</div>

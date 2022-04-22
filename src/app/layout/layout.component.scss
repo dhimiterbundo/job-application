@@ -1,0 +1,15 @@
+.main-container {
+  padding: 10px;
+  mat-toolbar-row{
+    display: flex;
+      .user{
+      align-self: flex-end;
+    }
+  }
+
+}
+  mat-toolbar-row div.user{
+    display: flex !important;
+    justify-content: end !important;
+    margin-left: auto;
+  }
