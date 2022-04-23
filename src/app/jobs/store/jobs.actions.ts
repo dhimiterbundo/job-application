@@ -34,7 +34,7 @@ export const SelectJob = createAction(type.SELECT_JOB, props<{ id: string }>());
 
 export const findAllJobs = createAction(type.FIND_ALL_JOBS, props<{ pageNumber: number }>());
 export const findAllJobsFail = createAction(type.FIND_ALL_JOBS_FAIL, props<{ error: any }>());
-export const findAllJobsSuccess = createAction(type.FIND_ALL_JOBS_SUCCESS, props<{ jobs: Array<JobModel> }>());
+export const findAllJobsSuccess = createAction(type.FIND_ALL_JOBS_SUCCESS, props<{ jobs: JobModel[] }>());
 
 export const findOneJob = createAction(type.FIND_ONE_JOB, props<{ id: string }>());
 export const findOneJobFail = createAction(type.FIND_ONE_JOB_FAIL, props<{ error: any }>());

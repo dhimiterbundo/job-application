@@ -1,5 +1,3 @@
-import { isUpdateSuccess } from './../store/jobs.selectors';
-import { findAllJobs } from './../store/jobs.actions';
 import { JobModel } from './../../shared/models/response.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -99,8 +97,7 @@ export class SearchJobComponent implements OnInit, OnDestroy {
     // this.store.dispatch(jobActions.findAllJobs({ pageNumber: this.pageNumber }));
     // this.jobStore$ = this.store.select(jobSelector.selectAllJobs)
     //   .subscribe((jobs) => {
-    //     // Array.prototype.push.apply(this.jobs, jobs);
-    //     this.jobs = [...jobs];;
+    //     Array.prototype.push.apply(this.jobs, jobs);
     //   });
 
   }
@@ -127,7 +124,10 @@ export class SearchJobComponent implements OnInit, OnDestroy {
   jobAction(event): void {
     if (event.action === 'delete') {
       this.delete(event.job);
-    } else {
+    } else if (event.action === 'details') {
+      this.router.navigateByUrl(`jobs/edit/${event.job.id}`);
+    }
+    else {
       this.jobService.addFavouriteJobs(event.job).pipe(tap(() => {
         this.notification.info('Postimi u shtua ne liste me sukses!');
       }),

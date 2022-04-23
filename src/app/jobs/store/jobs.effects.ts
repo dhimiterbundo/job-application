@@ -14,7 +14,7 @@ export class JobsEffects {
       ofType(jobsActions.findAllJobs),
       switchMap((action) =>
         this.jobsService.getAllJobs(action.pageNumber).pipe(
-          map((jobs) => jobsActions.findAllJobsSuccess(jobs)),
+          map((jobs: JobModel[]) => jobsActions.findAllJobsSuccess({jobs})),
           catchError((error) => of(jobsActions.findAllJobsFail({ error })))
         )
       )

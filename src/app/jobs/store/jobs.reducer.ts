@@ -17,10 +17,7 @@ const jobsReducer = createReducer(
     error: null,
   })),
   on(jobsActions.findAllJobsSuccess, (state, { jobs }) => {
-    return jobsState.adapter.addMany(jobs, {
-      ...state,
-      loading: false,
-    });
+    return jobsState.adapter.addMany(jobs, state);
   }),
   on(jobsActions.findAllJobsFail, (state, { error }) => ({
     ...state,
